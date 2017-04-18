@@ -61,6 +61,10 @@ def create_edge_list(line):
 	return edgelist
 
 
+def kinflunencial(g):
+	r = g.pageRank(resetProbability=0.15, tol=0.01)
+	top(2,key = lambda x: x[1])
+	print s.collect()
 
 edge_list_file =  sqlContext.read.text(sys.argv[1]).rdd.map(lambda r: r[0])
 vertices = edge_list_file.flatMap(lambda r: parsevertices(r)) # returns an RDD list of (id, vertex, type) by spitting the input line
@@ -93,12 +97,6 @@ print g1.count()
 iter_count = 2
 standard_deviation = 0
 while iter_count != 0:
-	r = g.pageRank(resetProbability=0.15, tol=0.01)
-	print r.vertices.rdd.collect()
-	s = r.vertices.rdd.join(vertices_deviation.rdd)
-	print s.collect()
+	
 	#Use r and store the values here
 	iter_count = iter_count - 1
-
-	
-

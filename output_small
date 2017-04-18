@@ -1,0 +1,110 @@
++---+----+------+
+|src| dst|weight|
++---+----+------+
+|  0|9602|     2|
+|  0|9156|     1|
+|  0|4301|     1|
+|  0|4417|     1|
+|  0|3049|     1|
+|  0| 294|     1|
+|  0|2352|     2|
+|  0|6987|     1|
+|  0|8804|     1|
+|  0|2971|     1|
+|  0|1155|     1|
+|  0| 882|     3|
+|  0| 258|     2|
+|  0|8368|     1|
+|  0|2094|     1|
+|  0|8969|     3|
+|  0| 488|     1|
+|  0|3483|     1|
+|  0|5654|     1|
+|  0|3769|     1|
++---+----+------+
+only showing top 20 rows
+
++----+-----+
+|  id|value|
++----+-----+
+|3344|    0|
+|2615|    0|
+|8476|    0|
+|8177|    0|
+|9154|    0|
+|3203|    0|
+|2599|    0|
+|6139|    0|
+| 444|    0|
+|8065|    0|
+|5241|    0|
+|7619|    0|
+|7851|    0|
+|7518|    0|
+|  55|    0|
+|8859|    0|
+|6035|    0|
+|1246|    0|
+|8270|    0|
+|1905|    0|
++----+-----+
+only showing top 20 rows
+
+no of rows are  10000
+Traceback (most recent call last):
+  File "/Users/acemaster/Documents/kinfluenical/test.py", line 57, in <module>
+    r = g.pageRank(resetProbability=0.15, tol=0.01)
+  File "/Users/tjhunter/work/graphframes/python/graphframes/graphframe.py", line 258, in pageRank
+  File "/usr/local/Cellar/apache-spark/2.1.0/libexec/python/lib/py4j-0.10.4-src.zip/py4j/java_gateway.py", line 1133, in __call__
+  File "/usr/local/Cellar/apache-spark/2.1.0/libexec/python/lib/pyspark.zip/pyspark/sql/utils.py", line 63, in deco
+  File "/usr/local/Cellar/apache-spark/2.1.0/libexec/python/lib/py4j-0.10.4-src.zip/py4j/protocol.py", line 319, in get_return_value
+py4j.protocol.Py4JJavaError: An error occurred while calling o90.run.
+: org.apache.spark.SparkException: Job 20 cancelled because SparkContext was shut down
+	at org.apache.spark.scheduler.DAGScheduler$$anonfun$cleanUpAfterSchedulerStop$1.apply(DAGScheduler.scala:808)
+	at org.apache.spark.scheduler.DAGScheduler$$anonfun$cleanUpAfterSchedulerStop$1.apply(DAGScheduler.scala:806)
+	at scala.collection.mutable.HashSet.foreach(HashSet.scala:78)
+	at org.apache.spark.scheduler.DAGScheduler.cleanUpAfterSchedulerStop(DAGScheduler.scala:806)
+	at org.apache.spark.scheduler.DAGSchedulerEventProcessLoop.onStop(DAGScheduler.scala:1668)
+	at org.apache.spark.util.EventLoop.stop(EventLoop.scala:83)
+	at org.apache.spark.scheduler.DAGScheduler.stop(DAGScheduler.scala:1587)
+	at org.apache.spark.SparkContext$$anonfun$stop$8.apply$mcV$sp(SparkContext.scala:1826)
+	at org.apache.spark.util.Utils$.tryLogNonFatalError(Utils.scala:1283)
+	at org.apache.spark.SparkContext.stop(SparkContext.scala:1825)
+	at org.apache.spark.SparkContext$$anonfun$2.apply$mcV$sp(SparkContext.scala:581)
+	at org.apache.spark.util.SparkShutdownHook.run(ShutdownHookManager.scala:216)
+	at org.apache.spark.util.SparkShutdownHookManager$$anonfun$runAll$1$$anonfun$apply$mcV$sp$1.apply$mcV$sp(ShutdownHookManager.scala:188)
+	at org.apache.spark.util.SparkShutdownHookManager$$anonfun$runAll$1$$anonfun$apply$mcV$sp$1.apply(ShutdownHookManager.scala:188)
+	at org.apache.spark.util.SparkShutdownHookManager$$anonfun$runAll$1$$anonfun$apply$mcV$sp$1.apply(ShutdownHookManager.scala:188)
+	at org.apache.spark.util.Utils$.logUncaughtExceptions(Utils.scala:1951)
+	at org.apache.spark.util.SparkShutdownHookManager$$anonfun$runAll$1.apply$mcV$sp(ShutdownHookManager.scala:188)
+	at org.apache.spark.util.SparkShutdownHookManager$$anonfun$runAll$1.apply(ShutdownHookManager.scala:188)
+	at org.apache.spark.util.SparkShutdownHookManager$$anonfun$runAll$1.apply(ShutdownHookManager.scala:188)
+	at scala.util.Try$.apply(Try.scala:192)
+	at org.apache.spark.util.SparkShutdownHookManager.runAll(ShutdownHookManager.scala:188)
+	at org.apache.spark.util.SparkShutdownHookManager$$anon$2.run(ShutdownHookManager.scala:178)
+	at org.apache.hadoop.util.ShutdownHookManager$1.run(ShutdownHookManager.java:54)
+	at org.apache.spark.scheduler.DAGScheduler.runJob(DAGScheduler.scala:628)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:1918)
+	at org.apache.spark.SparkContext.runJob(SparkContext.scala:1981)
+	at org.apache.spark.rdd.RDD$$anonfun$reduce$1.apply(RDD.scala:1025)
+	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:151)
+	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:112)
+	at org.apache.spark.rdd.RDD.withScope(RDD.scala:362)
+	at org.apache.spark.rdd.RDD.reduce(RDD.scala:1007)
+	at org.apache.spark.graphx.impl.VertexRDDImpl.count(VertexRDDImpl.scala:90)
+	at org.apache.spark.graphx.Pregel$.apply(Pregel.scala:146)
+	at org.apache.spark.graphx.lib.backport.PageRank$.runUntilConvergenceWithOptions(PageRank.scala:251)
+	at org.graphframes.lib.PageRank$.runUntilConvergence(PageRank.scala:152)
+	at org.graphframes.lib.PageRank.run(PageRank.scala:102)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:357)
+	at py4j.Gateway.invoke(Gateway.java:280)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.GatewayConnection.run(GatewayConnection.java:214)
+	at java.lang.Thread.run(Thread.java:745)
+
