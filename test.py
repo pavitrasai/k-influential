@@ -55,8 +55,8 @@ g = GraphFrame(vertices_df, edges_df)
 
 k=20
 r = g.pageRank(resetProbability=0.15, tol=0.01)
-topk = r.vertices.top(k, key=lambda x: x["pagerank"])
+topk = r.vertices.rdd.top(k, key=lambda x: x["pagerank"])
 print "Top 20"
-print topk.rdd.collect()
+print topk
 print "All verticees"
 print r.vertices.rdd.collect()
